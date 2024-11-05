@@ -13,7 +13,7 @@ const Navbar = () => {
       {/* MOBILE */}
       <div className="h-full flex items-center justify-between md:hidden">
         <Link href="/">
-          <div className="text-2xl tracking-wide">LAMA</div>
+          <div className="text-2xl tracking-wide">VIKRAM</div>
         </Link>
         <Menu />
       </div>
