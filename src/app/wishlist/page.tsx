@@ -1,19 +1,16 @@
-"use client"; // Mark as client-side component
-
+"use client"; 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 const WishlistPage = () => {
-  const [wishlist, setWishlist] = useState<number[]>([]); // State to manage wishlist products
-  const [products, setProducts] = useState<any[]>([]); // State to store product details
+  const [wishlist, setWishlist] = useState<number[]>([]); 
+  const [products, setProducts] = useState<any[]>([]);
 
   useEffect(() => {
-    // Retrieve wishlist from local storage
     const storedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
     setWishlist(storedWishlist);
 
-    // Fetch product details based on wishlist IDs
     if (storedWishlist.length > 0) {
       fetch("https://fakestoreapi.com/products")
         .then((res) => res.json())
@@ -29,16 +26,12 @@ const WishlistPage = () => {
     }
   }, []);
 
-  // Function to remove product from wishlist
   const handleRemoveFromWishlist = (productId: number) => {
-    // Filter out the removed product from the wishlist
     const updatedWishlist = wishlist.filter((id) => id !== productId);
     setWishlist(updatedWishlist);
     
-    // Update local storage
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
 
-    // Also update the products state to remove the product from the displayed list
     setProducts(products.filter((product) => product.id !== productId));
   };
 

@@ -15,14 +15,12 @@ const SinglePage = async ({ params }: { params: Params }) => {
 
     if (!res.ok) {
       console.error('Error fetching product:', res.status, res.statusText);
-      return <p>Product not found.</p>; // Handle error gracefully
+      return <p>Product not found.</p>; 
     }
 
-    // Log the raw response to check what we received
     const text = await res.text();
     console.log('Raw response:', text);
 
-    // Check if the response is empty
     if (!text || text.trim() === '') {
       console.error('Received empty response from API.');
       return <p>Error: Received an empty response.</p>;
@@ -36,7 +34,6 @@ const SinglePage = async ({ params }: { params: Params }) => {
       return <p>Error parsing product data.</p>;
     }
 
-    // Validate product data
     if (!product || !product.id) {
       console.error('Product data is invalid:', product);
       return <p>Product data is invalid.</p>;

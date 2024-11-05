@@ -10,7 +10,7 @@ const Add = ({
   stockNumber: number;
 }) => {
   const [quantity, setQuantity] = useState(1);
-  const [cart, setCart] = useState<any[]>([]); // Simple cart state for demonstration
+  const [cart, setCart] = useState<any[]>([]); 
   const [isAdding, setIsAdding] = useState(false);
 
   const handleQuantity = (type: "i" | "d") => {
@@ -25,7 +25,6 @@ const Add = ({
   const addItemToCart = async () => {
     setIsAdding(true);
 
-    // Simulate adding to cart. Here we're just updating local state.
     const productResponse = await fetch(`https://fakestoreapi.com/products/${productId}`);
     const product = await productResponse.json();
 

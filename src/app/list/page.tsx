@@ -16,22 +16,21 @@ interface Product {
   description: string;
   category: string;
   image: string;
-  rating: Rating; // Add rating field to the Product interface
+  rating: Rating; 
 }
 
 const ListPage = () => {
   const searchParams = useSearchParams();
-  const cat = searchParams.get('cat'); // Get the 'cat' query parameter
+  const cat = searchParams.get('cat'); 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); // State for error handling
+  const [error, setError] = useState<string | null>(null); 
 
   useEffect(() => {
-    // Fetch products based on the selected category
     const fetchProducts = async () => {
-      if (!cat) return; // Only fetch if a category is provided
-      setLoading(true); // Set loading state to true on fetch
-      setError(null); // Reset error state
+      if (!cat) return; 
+      setLoading(true);
+      setError(null); 
 
       try {
         const response = await fetch(`https://fakestoreapi.com/products/category/${encodeURIComponent(cat)}`);
@@ -44,7 +43,7 @@ const ListPage = () => {
         console.error('Error fetching products:', error);
         setError(error instanceof Error ? error.message : 'An unknown error occurred');
       } finally {
-        setLoading(false); // Set loading to false after fetch completes
+        setLoading(false); 
       }
     };
 
@@ -52,11 +51,11 @@ const ListPage = () => {
   }, [cat]);
 
   if (loading) {
-    return <p>Loading products...</p>; // Show loading message
+    return <p>Loading products...</p>;
   }
 
   if (error) {
-    return <p className="text-red-500">{error}</p>; // Show error message if there's an error
+    return <p className="text-red-500">{error}</p>; 
   }
 
   return (
@@ -84,7 +83,7 @@ const ListPage = () => {
                 ${product.price.toFixed(2)}
               </span>
               <span className="text-sm text-gray-400 line-through">
-                ${(product.price * 1.2).toFixed(2)} {/* Original price */}
+                ${(product.price * 1.2).toFixed(2)} 
               </span>
             </div>
             <div className="text-yellow-500 text-xs">

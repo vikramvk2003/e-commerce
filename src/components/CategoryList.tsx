@@ -35,12 +35,10 @@ const CategoryList = () => {
 
   return (
     <div className="relative flex items-center px-10 w-full h-80">
-      {/* Left Navigation Button */}
       <button className="absolute left-0 z-10 bg-white p-2 rounded-full shadow-md">
         <FaArrowLeft />
       </button>
 
-      {/* Category Cards */}
       <div className="flex gap-12 overflow-x-auto scrollbar-hide px-20">
         {categories.map((category, index) => (
           <Link
@@ -61,7 +59,6 @@ const CategoryList = () => {
         ))}
       </div>
 
-      {/* Right Navigation Button */}
       <button className="absolute right-0 z-10 bg-white p-2 rounded-full shadow-md">
         <FaArrowRight />
       </button>

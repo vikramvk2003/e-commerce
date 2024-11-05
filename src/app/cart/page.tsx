@@ -1,31 +1,28 @@
-"use client"; // Mark as client-side component
+"use client"; 
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState<any[]>([]); // State to manage cart items
+  const [cartItems, setCartItems] = useState<any[]>([]); 
 
   useEffect(() => {
-    // Retrieve cart from local storage
     const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
     setCartItems(storedCart);
   }, []);
 
-  // Function to handle removing an item from the cart
   const removeFromCart = (id: number) => {
     const updatedCart = cartItems.filter(item => item.id !== id);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
-    setCartItems(updatedCart); // Update state to re-render
+    setCartItems(updatedCart); 
   };
 
-  // Function to calculate total price
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
       const discountedPrice = item.price * (1 - (item.discountPercentage! / 100));
       return total + discountedPrice;
-    }, 0).toFixed(2); // Format to 2 decimal places
+    }, 0).toFixed(2); 
   };
 
   return (
