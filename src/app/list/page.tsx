@@ -99,4 +99,5 @@ const ListPage = () => {
   );
 };
 
+// This is the default export for the page
 export default ListPage;
