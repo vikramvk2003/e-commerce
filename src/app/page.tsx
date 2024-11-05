@@ -1,6 +1,16 @@
+"use client"
+import CategoryList from "@/components/CategoryList"
+import ProductList from "@/components/ProductList"
+import Slider from "@/components/Slider"
+import WishlistPage from "@/components/Wishlist"
+
 const HomePage = () => {
   return (
-    <div className=''>HomePage</div>
+    <div className=''>
+      <Slider/>
+      <ProductList/>
+      <CategoryList/>
+    </div>
   )
 }
 
